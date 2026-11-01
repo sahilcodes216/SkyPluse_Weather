@@ -1,4 +1,4 @@
-# SkyPulse 🌤️🇮🇳
+# 🌤️ SkyPulse 
 
 > Clean, fast weather dashboard for any city, town, or village in **India**.
 
