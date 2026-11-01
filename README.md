@@ -82,3 +82,6 @@ SkyPulse can be deployed with 1 click to any free static host:
 - Weather data provided by [Open-Meteo.com](https://open-meteo.com/) under the [Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/).
 - Fonts: [Inter](https://fonts.google.com/specimen/Inter) by Rasmus Andersson (SIL Open Font License).
 
+
+## Author
+- Sahil Verma
