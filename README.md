@@ -83,5 +83,5 @@ SkyPulse can be deployed with 1 click to any free static host:
 - Fonts: [Inter](https://fonts.google.com/specimen/Inter) by Rasmus Andersson (SIL Open Font License).
 
 
-## Author
-- Sahil Verma
+## 📖 Author
+- *Sahil Verma**
