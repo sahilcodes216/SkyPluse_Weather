@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="sunGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD15C"/>
+      <stop offset="100%" stop-color="#FFA114"/>
+    </linearGradient>
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#D9E6F2"/>
+    </linearGradient>
+    <linearGradient id="pulseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82C4"/>
+      <stop offset="50%" stop-color="#00D2FF"/>
+      <stop offset="100%" stop-color="#3B82C4"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Sun peeking from top-right of cloud -->
+  <circle cx="40" cy="24" r="14" fill="url(#sunGrad)"/>
+  <g stroke="#FFA114" stroke-width="2.5" stroke-linecap="round">
+    <line x1="40" y1="5" x2="40" y2="2"/>
+    <line x1="53.4" y1="10.6" x2="55.5" y2="8.5"/>
+    <line x1="59" y1="24" x2="62" y2="24"/>
+    <line x1="53.4" y1="37.4" x2="55.5" y2="39.5"/>
+    <line x1="26.6" y1="10.6" x2="24.5" y2="8.5"/>
+  </g>
+
+  <!-- Cloud -->
+  <path d="M46 44H18a12 12 0 0 1-2.4-23.76A15 15 0 0 1 43.6 22.8 11 11 0 0 1 46 44z"
+        fill="url(#cloudGrad)"
+        filter="url(#shadow)"/>
+
+  <!-- Pulse ECG line overlay -->
+  <path d="M4 44 L16 44 L20 44 L24 35 L28 50 L33 30 L38 48 L42 44 L60 44"
+        fill="none"
+        stroke="#3B82C4"
+        stroke-width="3.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+</svg>
+

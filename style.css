@@ -1,0 +1,1377 @@
+/* ==========================================================================
+   SkyPulse - Complete Clean Light-Mode Stylesheet
+   Color Palette: Calm Sky Blue, Soft Amber, Teal Blue, Soft Indigo
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Global Variables & Light Theme
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand & Accents */
+  --primary: #3B82C4;
+  --primary-dark: #1F5F99;
+  --primary-light: #EBF3FA;
+  --primary-glow: rgba(59, 130, 196, 0.22);
+  
+  --temp-accent: #E08A4B;
+  --temp-accent-bg: rgba(224, 138, 75, 0.12);
+  --humidity-accent: #3BA0C8;
+  --humidity-accent-bg: rgba(59, 160, 200, 0.12);
+  --pressure-accent: #6C7DC7;
+  --pressure-accent-bg: rgba(108, 125, 199, 0.12);
+
+  --status-error: #D9534F;
+  --status-error-bg: rgba(217, 83, 79, 0.1);
+  --status-success: #2F855A;
+  --status-warning: #D97706;
+
+  /* Clean Light Surfaces */
+  --bg: #F4F7FB;
+  --card-bg: #FFFFFF;
+  --card-bg-subtle: #F8FAFC;
+  --border: #E2E8F0;
+  --border-focus: #3B82C4;
+
+  --text: #1B2733;
+  --text-muted: #64748B;
+  --text-inverse: #FFFFFF;
+
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 6px 16px rgba(15, 23, 42, 0.08);
+
+  /* Hero Gradient */
+  --hero-gradient: linear-gradient(135deg, #3B82C4 0%, #60A5FA 100%);
+
+  /* Skeleton Shimmer */
+  --shimmer-base: #E2E8F0;
+  --shimmer-shine: #EDF2F7;
+
+  /* Typography & Layout */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Reset & Accessibility
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+button, input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  touch-action: manipulation;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+.site-header {
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-xs);
+}
+
+.header-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.brand-icon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.brand-link:hover .brand-icon {
+  transform: scale(1.05);
+}
+
+.brand-highlight {
+  color: var(--primary);
+}
+
+.india-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.15rem 0.55rem;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid rgba(59, 130, 196, 0.2);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  background-color: var(--card-bg-subtle);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--status-success);
+  box-shadow: 0 0 6px rgba(47, 133, 90, 0.5);
+}
+
+.status-dot.offline {
+  background-color: var(--status-error);
+  box-shadow: 0 0 6px rgba(217, 83, 79, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   Main Layout & Centering
+   -------------------------------------------------------------------------- */
+.main-wrapper {
+  max-width: 1040px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+  flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Search Section
+   -------------------------------------------------------------------------- */
+.search-section {
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-container {
+  position: relative;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon-slot {
+  position: absolute;
+  left: 1.15rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 2.5rem 0 3rem;
+  font-size: 0.98rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  color: var(--text);
+  box-shadow: var(--shadow-xs);
+  transition: var(--transition);
+}
+
+.search-input:hover {
+  border-color: #CBD5E1;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.clear-btn:hover {
+  background-color: var(--border);
+  color: var(--text);
+}
+
+.geo-btn {
+  height: 48px;
+  padding: 0 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: var(--card-bg);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-xs);
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.geo-btn:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary);
+}
+
+.geo-btn:active {
+  transform: scale(0.98);
+}
+
+/* Suggestion Dropdown */
+.suggestions-container {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  z-index: 100;
+  overflow: hidden;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem 0;
+}
+
+.suggestion-item {
+  padding: 0.75rem 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border-bottom: 1px solid var(--border);
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover,
+.suggestion-item.active {
+  background-color: var(--primary-light);
+}
+
+.suggestion-place {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.suggestion-admin {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.suggestion-badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.15rem 0.45rem;
+  background-color: var(--card-bg-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+
+.search-hint {
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  margin-top: 0.6rem;
+}
+
+/* --------------------------------------------------------------------------
+   Popular Cities Section (Centered)
+   -------------------------------------------------------------------------- */
+.popular-cities-section {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title-row {
+  margin-bottom: 0.6rem;
+}
+
+.popular-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.popular-chips-scroller {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 900px;
+}
+
+.city-chip {
+  padding: 0.4rem 0.95rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  white-space: nowrap;
+  box-shadow: var(--shadow-xs);
+  transition: var(--transition);
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.city-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background-color: var(--primary-light);
+}
+
+.city-chip.active {
+  background-color: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Alert Banner (Offline Notification)
+   -------------------------------------------------------------------------- */
+.alert-banner {
+  display: none;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: var(--status-warning);
+  color: #FFFFFF;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+}
+
+/* --------------------------------------------------------------------------
+   Error State Container
+   -------------------------------------------------------------------------- */
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 1rem;
+}
+
+.error-card {
+  max-width: 460px;
+  width: 100%;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.error-icon {
+  margin-bottom: 0.85rem;
+}
+
+.error-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+.error-message {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.retry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  background-color: var(--primary);
+  color: #FFFFFF;
+  transition: var(--transition);
+}
+
+.retry-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* --------------------------------------------------------------------------
+   Weather Dashboard Stack (Symmetrical, Single Column Flow)
+   -------------------------------------------------------------------------- */
+.weather-dashboard {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   1. Current Conditions Hero Card
+   -------------------------------------------------------------------------- */
+.hero-card {
+  background: var(--hero-gradient);
+  color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-main-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.hero-left-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.22);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  width: fit-content;
+}
+
+.hero-city {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.hero-status-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+.hero-condition {
+  font-weight: 600;
+}
+
+.hero-dot-sep {
+  opacity: 0.7;
+}
+
+.hero-right-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-icon-slot {
+  width: 68px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+}
+
+.hero-icon-slot svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-temp-block {
+  display: flex;
+  align-items: flex-start;
+}
+
+.hero-temp {
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.hero-unit {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  opacity: 0.85;
+}
+
+.hero-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 0.82rem;
+}
+
+.update-info {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0.9;
+}
+
+.refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.refresh-btn:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   2. Three Core Metric Cards (Temperature, Humidity, Air Pressure)
+   -------------------------------------------------------------------------- */
+.core-metrics-section {
+  width: 100%;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.metric-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem;
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+  transition: var(--transition);
+}
+
+.metric-card:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: #CBD5E1;
+}
+
+.metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.metric-label-group {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.metric-icon-bubble {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.temp-bubble {
+  background-color: var(--temp-accent-bg);
+  color: var(--temp-accent);
+}
+
+.humidity-bubble {
+  background-color: var(--humidity-accent-bg);
+  color: var(--humidity-accent);
+}
+
+.pressure-bubble {
+  background-color: var(--pressure-accent-bg);
+  color: var(--pressure-accent);
+}
+
+.metric-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.metric-unit-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background-color: var(--card-bg-subtle);
+  color: var(--text-muted);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.metric-main-val {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  margin: 0.35rem 0;
+}
+
+.metric-number {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1;
+}
+
+.metric-degree {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.metric-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  margin-bottom: 0.65rem;
+}
+
+/* Temperature Card Range */
+.temp-range {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.temp-high strong {
+  color: var(--temp-accent);
+}
+
+.temp-low strong {
+  color: var(--primary);
+}
+
+.temp-divider {
+  color: var(--text-muted);
+}
+
+.temp-bar-wrapper {
+  margin-top: auto;
+}
+
+.temp-bar-track {
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(to right, #3B82C4, #E08A4B);
+  border-radius: var(--radius-full);
+}
+
+/* Humidity Badges & Bar */
+.badge-pill {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.18rem 0.65rem;
+  border-radius: var(--radius-full);
+  text-transform: capitalize;
+}
+
+.badge-dry {
+  background-color: rgba(224, 138, 75, 0.15);
+  color: #D97706;
+}
+
+.badge-comfortable {
+  background-color: rgba(47, 133, 90, 0.15);
+  color: #2F855A;
+}
+
+.badge-humid {
+  background-color: rgba(59, 130, 196, 0.15);
+  color: #2B6CB0;
+}
+
+.badge-very-humid {
+  background-color: rgba(108, 125, 199, 0.18);
+  color: #553C9A;
+}
+
+.metric-progress-wrapper {
+  margin-top: auto;
+}
+
+.metric-progress-bar {
+  height: 5px;
+  width: 100%;
+  background-color: var(--card-bg-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.metric-progress-fill {
+  height: 100%;
+  transition: width 0.4s ease-out;
+}
+
+.humidity-fill {
+  background-color: var(--humidity-accent);
+}
+
+.progress-marks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Pressure Card */
+.pressure-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.badge-low {
+  background-color: rgba(217, 83, 79, 0.15);
+  color: #C53030;
+}
+
+.badge-normal {
+  background-color: rgba(47, 133, 90, 0.15);
+  color: #2F855A;
+}
+
+.badge-high {
+  background-color: rgba(59, 130, 196, 0.15);
+  color: #2B6CB0;
+}
+
+.trend-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.18rem 0.55rem;
+  border-radius: var(--radius-full);
+  background-color: var(--card-bg-subtle);
+  border: 1px solid var(--border);
+}
+
+.trend-rising {
+  color: #2F855A;
+}
+
+.trend-falling {
+  color: #C53030;
+}
+
+.trend-steady {
+  color: var(--text-muted);
+}
+
+.surface-pressure-detail {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--border);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+.surface-pressure-detail strong {
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------------------
+   3. Hourly Forecast Strip (Next 24 Hours)
+   -------------------------------------------------------------------------- */
+.forecast-section {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-xs);
+  width: 100%;
+}
+
+.forecast-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.15rem;
+}
+
+.section-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scroll-hint-text,
+.daily-legend-text {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.hourly-strip-container {
+  position: relative;
+  width: 100%;
+}
+
+.hourly-strip {
+  display: flex;
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding-bottom: 0.65rem;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.hourly-strip::-webkit-scrollbar {
+  height: 5px;
+}
+
+.hourly-strip::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: var(--radius-full);
+}
+
+.hourly-card {
+  flex: 0 0 74px;
+  background-color: var(--card-bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 0.35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.hourly-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-xs);
+}
+
+.hourly-card.current-hour {
+  background-color: var(--primary-light);
+  border-color: var(--primary);
+}
+
+.hourly-time {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.hourly-card.current-hour .hourly-time {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.hourly-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hourly-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hourly-temp {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.hourly-humidity {
+  font-size: 0.72rem;
+  color: var(--humidity-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   4. 7-Day Forecast List (Balanced & Aligned)
+   -------------------------------------------------------------------------- */
+.daily-forecast-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.daily-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  background-color: var(--card-bg-subtle);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.daily-row:hover {
+  background-color: var(--primary-light);
+}
+
+.daily-day {
+  width: 95px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.daily-weather {
+  width: 170px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.daily-icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.daily-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.daily-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Centered & Compact Temperature Bar Container */
+.daily-temp-bar-col {
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.daily-min {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  width: 32px;
+  text-align: right;
+  font-weight: 500;
+}
+
+.daily-bar-track {
+  width: 130px;
+  height: 6px;
+  background-color: var(--border);
+  border-radius: var(--radius-full);
+  position: relative;
+  overflow: hidden;
+}
+
+.daily-bar-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(to right, #3B82C4, #E08A4B);
+  border-radius: var(--radius-full);
+}
+
+.daily-max {
+  font-size: 0.88rem;
+  color: var(--text);
+  font-weight: 700;
+  width: 32px;
+  text-align: left;
+}
+
+.daily-humidity-col {
+  width: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.2rem;
+  font-size: 0.82rem;
+  color: var(--humidity-accent);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Loading Skeleton State
+   -------------------------------------------------------------------------- */
+.skeleton-container {
+  width: 100%;
+}
+
+.skeleton-card {
+  background: linear-gradient(90deg, var(--shimmer-base) 25%, var(--shimmer-shine) 50%, var(--shimmer-base) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-lg);
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-hero {
+  height: 180px;
+}
+
+.skeleton-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.skeleton-metric {
+  height: 170px;
+}
+
+.skeleton-hourly {
+  height: 150px;
+}
+
+.skeleton-forecast {
+  height: 380px;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border);
+  padding: 1.75rem 1.25rem;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.footer-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+}
+
+.footer-scope {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.footer-link {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-link:hover {
+  color: var(--primary-dark);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Adaptations
+   -------------------------------------------------------------------------- */
+
+/* Tablet & Mobile Breakpoints */
+@media (max-width: 820px) {
+  .hero-main-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .hero-right-info {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .daily-weather {
+    width: 130px;
+  }
+
+  .daily-temp-bar-col {
+    width: 170px;
+  }
+
+  .daily-bar-track {
+    width: 90px;
+  }
+}
+
+@media (max-width: 680px) {
+  .metrics-grid,
+  .skeleton-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-temp {
+    font-size: 3.5rem;
+  }
+
+  .hero-card {
+    padding: 1.25rem;
+  }
+
+  .popular-chips-scroller {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  .daily-row {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .daily-day {
+    width: 75px;
+    font-size: 0.85rem;
+  }
+
+  .daily-weather {
+    width: 110px;
+  }
+
+  .daily-desc {
+    display: none;
+  }
+
+  .daily-temp-bar-col {
+    width: 140px;
+  }
+
+  .daily-bar-track {
+    width: 60px;
+  }
+
+  .daily-humidity-col {
+    width: 55px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-meta {
+    text-align: left;
+  }
+}

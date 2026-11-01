@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="moon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F6E05E"/>
+      <stop offset="100%" stop-color="#D69E2E"/>
+    </linearGradient>
+  </defs>
+  <path d="M30 6 A18 18 0 1 0 42 32 A15 15 0 0 1 30 6 z" fill="url(#moon)" />
+  <!-- Small stars -->
+  <circle cx="36" cy="14" r="1.5" fill="#FAF089" opacity="0.8"/>
+  <circle cx="14" cy="12" r="1" fill="#FAF089" opacity="0.7"/>
+</svg>
+
